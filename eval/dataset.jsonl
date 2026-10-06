@@ -1,0 +1,20 @@
+{"question": "What time does the main library close on Friday?", "reference": "The main library closes at 18:00 on Friday.", "documents": ["library-guide.md"]}
+{"question": "Is the library open on Sunday?", "reference": "The library is closed on Sunday and on public holidays.", "documents": ["library-guide.md"]}
+{"question": "How many people can sit in a group study room?", "reference": "Each group study room seats six people.", "documents": ["library-guide.md"]}
+{"question": "How long can a group book a study room per day?", "reference": "A group room can be booked for up to three hours per group per day.", "documents": ["library-guide.md"]}
+{"question": "Where is the special collections room?", "reference": "The special collections room is on the fourth floor, room 410.", "documents": ["library-guide.md"]}
+{"question": "When is the special collections room open?", "reference": "It is open Tuesday and Thursday from 13:00 to 17:00.", "documents": ["library-guide.md"]}
+{"question": "How many books may an undergraduate borrow, and for how long?", "reference": "Undergraduate students may borrow up to 10 books for 21 days.", "documents": ["library-guide.md"]}
+{"question": "How long is the staff loan period?", "reference": "Academic staff may borrow books for 90 days.", "documents": ["library-guide.md"]}
+{"question": "Can journals be borrowed?", "reference": "Journals cannot be borrowed.", "documents": ["library-guide.md"]}
+{"question": "How long can a laptop be borrowed, and can it leave the building?", "reference": "Laptops may be borrowed for 4 hours and cannot leave the building.", "documents": ["library-guide.md"]}
+{"question": "What is the overdue fine per book per day?", "reference": "The overdue fine is 0.50 euros per book per day.", "documents": ["library-guide.md"]}
+{"question": "When is borrowing blocked because of fines?", "reference": "Borrowing is blocked when unpaid fines reach 10 euros.", "documents": ["library-guide.md"]}
+{"question": "How does a reader pay a fine?", "reference": "Payment is by campus card only. The library does not accept cash.", "documents": ["library-guide.md"]}
+{"question": "How long is a returned reserved book held?", "reference": "The library holds a reserved book for 3 days.", "documents": ["library-guide.md"]}
+{"question": "What does an interlibrary book loan cost?", "reference": "An interlibrary loan costs 8 euros for a book.", "documents": ["library-guide.md"]}
+{"question": "How long is the loan period for a course reserve book?", "reference": "The loan period for a course reserve book is 3 hours, and it must stay inside the library.", "documents": ["library-guide.md"]}
+{"question": "What is the library service desk email?", "reference": "The service desk email is library@northwind.edu.", "documents": ["library-guide.md"]}
+{"question": "Which building is the science block, and where is it?", "reference": "The science block is north of the library and is labelled building S.", "documents": ["campus-map.md"]}
+{"question": "How often does the campus shuttle leave the east gate?", "reference": "The campus shuttle leaves the east gate every 20 minutes between 08:00 and 19:00.", "documents": ["campus-map.md"]}
+{"question": "What does the visitor car park cost?", "reference": "The visitor car park costs 2 euros per hour.", "documents": ["campus-map.md"]}
