@@ -222,3 +222,4 @@ __marimo__/
 # Evaluation outputs
 eval/results/*
 !eval/results/.gitkeep
+!eval/results/*.json

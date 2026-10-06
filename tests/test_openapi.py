@@ -21,5 +21,8 @@ def test_operation_ids_match_the_generated_client_names():
         "documents-delete",
         "messages-list",
         "messages-create",
+        "evaluation-latest",
+        "evaluation-list",
+        "evaluation-get",
         "health-check",
     }

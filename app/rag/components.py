@@ -57,6 +57,15 @@ def get_llm():
     return _llm
 
 
+def _openai_compatible_base(url: str) -> str:
+    """Strip a trailing /chat/completions so OpenAILike can append it itself."""
+    cleaned = url.rstrip("/")
+    suffix = "/chat/completions"
+    if cleaned.lower().endswith(suffix):
+        return cleaned[: -len(suffix)]
+    return cleaned
+
+
 def get_eval_llm():
     settings = get_settings()
     if not settings.eval_llm_model and not settings.eval_llm_base_url:
@@ -65,12 +74,12 @@ def get_eval_llm():
 
     return OpenAILike(
         model=settings.eval_llm_model or settings.llm_model,
-        api_base=settings.eval_llm_base_url or settings.llm_base_url,
+        api_base=_openai_compatible_base(settings.eval_llm_base_url or settings.llm_base_url),
         api_key=settings.eval_llm_api_key or settings.llm_api_key,
         is_chat_model=True,
         is_function_calling_model=False,
         context_window=settings.llm_context_window,
-        timeout=120,
+        timeout=180,
     )
 
 

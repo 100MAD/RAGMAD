@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.routing import APIRoute
 from sqlalchemy import text
 
-from app.api import chats, documents, messages
+from app.api import chats, documents, evaluation, messages
 from app.config import get_settings
 from app.db.session import SessionLocal
 from app.rag.ingestion import ingest_document, processing_document_ids
@@ -58,6 +58,7 @@ app.add_middleware(
 app.include_router(chats.router)
 app.include_router(documents.router)
 app.include_router(messages.router)
+app.include_router(evaluation.router)
 
 
 @app.get("/healthz", tags=["health"], name="check")

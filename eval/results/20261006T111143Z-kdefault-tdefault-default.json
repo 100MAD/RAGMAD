@@ -1,0 +1,218 @@
+{
+  "id": "20261006T111143Z-kdefault-tdefault-default",
+  "created_at": "2026-10-06T11:11:43.198351Z",
+  "config": {
+    "name": "kdefault-tdefault-default",
+    "top_k": 5,
+    "chunk_tokens": 512,
+    "embed_model": "BAAI/bge-small-en-v1.5",
+    "collection": "ragmad_chunks",
+    "answer_model": "gpt-5-nano",
+    "eval_model": "deepseek-v4-pro"
+  },
+  "summary": {
+    "question_count": 20,
+    "scored_count": 16,
+    "overall_score": 0.0,
+    "metrics": {
+      "llm_context_precision_with_reference": {
+        "label": "Context precision",
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      }
+    }
+  },
+  "questions": [
+    {
+      "question": "What time does the main library close on Friday?",
+      "response": "It closes at 18:00 (6:00 PM) on Friday. (Source: library-guide.md)",
+      "reference": "The main library closes at 18:00 on Friday.",
+      "retrieved_contexts": [
+        "The main library is open Monday through Thursday from 08:00 to 22:00. On Friday it closes at 18:00. Saturday hours are 10:00 to 16:00. The library is closed on Sunday and on public holidays.\nThe quiet reading room is on the second floor and stays open with the main building. Group study rooms 201, 202, and 203 are on the same floor. Each group room seats six people. A room can be booked for up to three hours per group per day.\nThe special collections room is on the fourth floor, room 410. It is open Tuesday and Thursday from 13:00 to 17:00. Visitors must leave bags in the lockers beside the elevator.",
+        "Course reserve books are kept behind the service desk. The loan period is 3 hours, and the book must stay inside the library. A student card is left at the desk while the book is in use.",
+        "The service desk email is library@northwind.edu. The phone number is +31 20 555 0140. Lost property is held for 30 days in room 112.",
+        "An interlibrary loan costs 8 euros for a book and 4 euros for a journal article. Requests are submitted through the catalogue form named \"Request from another library\". Delivery usually takes 7 to 10 working days. The loan period for an interlibrary book is 14 days and it cannot be renewed.",
+        "Undergraduate students may borrow up to 10 books for 21 days. Postgraduate students may borrow up to 20 books for 42 days. Academic staff may borrow up to 40 books for 90 days.\nJournals, reference books marked with a red sticker, and items from special collections cannot be borrowed. Laptops from the laptop locker may be borrowed for 4 hours and cannot leave the building.\nA book can be renewed twice unless another reader has reserved it. Renewals are done in the catalogue or at the service desk."
+      ],
+      "scores": {}
+    },
+    {
+      "question": "Is the library open on Sunday?",
+      "response": "Empty Response",
+      "reference": "The library is closed on Sunday and on public holidays.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "How many people can sit in a group study room?",
+      "response": "Empty Response",
+      "reference": "Each group study room seats six people.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "How long can a group book a study room per day?",
+      "response": "Empty Response",
+      "reference": "A group room can be booked for up to three hours per group per day.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "Where is the special collections room?",
+      "response": "Empty Response",
+      "reference": "The special collections room is on the fourth floor, room 410.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "When is the special collections room open?",
+      "response": "Empty Response",
+      "reference": "It is open Tuesday and Thursday from 13:00 to 17:00.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "How many books may an undergraduate borrow, and for how long?",
+      "response": "Empty Response",
+      "reference": "Undergraduate students may borrow up to 10 books for 21 days.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "How long is the staff loan period?",
+      "response": "Empty Response",
+      "reference": "Academic staff may borrow books for 90 days.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "Can journals be borrowed?",
+      "response": "Empty Response",
+      "reference": "Journals cannot be borrowed.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "How long can a laptop be borrowed, and can it leave the building?",
+      "response": "Empty Response",
+      "reference": "Laptops may be borrowed for 4 hours and cannot leave the building.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "What is the overdue fine per book per day?",
+      "response": "Empty Response",
+      "reference": "The overdue fine is 0.50 euros per book per day.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "When is borrowing blocked because of fines?",
+      "response": "Empty Response",
+      "reference": "Borrowing is blocked when unpaid fines reach 10 euros.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "How does a reader pay a fine?",
+      "response": "Empty Response",
+      "reference": "Payment is by campus card only. The library does not accept cash.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "How long is a returned reserved book held?",
+      "response": "Empty Response",
+      "reference": "The library holds a reserved book for 3 days.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "What does an interlibrary book loan cost?",
+      "response": "Empty Response",
+      "reference": "An interlibrary loan costs 8 euros for a book.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "How long is the loan period for a course reserve book?",
+      "response": "Empty Response",
+      "reference": "The loan period for a course reserve book is 3 hours, and it must stay inside the library.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "What is the library service desk email?",
+      "response": "Empty Response",
+      "reference": "The service desk email is library@northwind.edu.",
+      "retrieved_contexts": [],
+      "scores": {
+        "llm_context_precision_with_reference": 0.0
+      }
+    },
+    {
+      "question": "Which building is the science block, and where is it?",
+      "response": "From campus-map.md (Buildings section): The science block is Building S, and it is north of the library.",
+      "reference": "The science block is north of the library and is labelled building S.",
+      "retrieved_contexts": [
+        "The library faces the east gate. The science block is north of the library and is labelled building S. The student centre is west of the library and is labelled building C. The rector's office is in building A, which is the stone building on the south side of the main lawn.",
+        "Lecture hall L1 is on the ground floor of the science block and seats 180 people. The campus clinic is in building C, room 12, and is open on weekdays from 09:00 to 15:00. The visitor car park is south of building A and costs 2 euros per hour.",
+        "Bicycles must be parked in the racks beside the east gate. Bicycles left against the library steps are removed every day at 18:00. The campus shuttle leaves the east gate every 20 minutes between 08:00 and 19:00 and stops at the science block and the railway station."
+      ],
+      "scores": {}
+    },
+    {
+      "question": "How often does the campus shuttle leave the east gate?",
+      "response": "It leaves every 20 minutes between 08:00 and 19:00. (Source: campus-map.md, Getting around)",
+      "reference": "The campus shuttle leaves the east gate every 20 minutes between 08:00 and 19:00.",
+      "retrieved_contexts": [
+        "Bicycles must be parked in the racks beside the east gate. Bicycles left against the library steps are removed every day at 18:00. The campus shuttle leaves the east gate every 20 minutes between 08:00 and 19:00 and stops at the science block and the railway station.",
+        "Lecture hall L1 is on the ground floor of the science block and seats 180 people. The campus clinic is in building C, room 12, and is open on weekdays from 09:00 to 15:00. The visitor car park is south of building A and costs 2 euros per hour.",
+        "The library faces the east gate. The science block is north of the library and is labelled building S. The student centre is west of the library and is labelled building C. The rector's office is in building A, which is the stone building on the south side of the main lawn."
+      ],
+      "scores": {}
+    },
+    {
+      "question": "What does the visitor car park cost?",
+      "response": "2 euros per hour. (Source: campus-map.md, Rooms section)",
+      "reference": "The visitor car park costs 2 euros per hour.",
+      "retrieved_contexts": [
+        "Lecture hall L1 is on the ground floor of the science block and seats 180 people. The campus clinic is in building C, room 12, and is open on weekdays from 09:00 to 15:00. The visitor car park is south of building A and costs 2 euros per hour.",
+        "Bicycles must be parked in the racks beside the east gate. Bicycles left against the library steps are removed every day at 18:00. The campus shuttle leaves the east gate every 20 minutes between 08:00 and 19:00 and stops at the science block and the railway station.",
+        "The library faces the east gate. The science block is north of the library and is labelled building S. The student centre is west of the library and is labelled building C. The rector's office is in building A, which is the stone building on the south side of the main lawn."
+      ],
+      "scores": {}
+    }
+  ]
+}

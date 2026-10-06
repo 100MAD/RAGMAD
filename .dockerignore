@@ -4,6 +4,6 @@
 .ruff_cache
 __pycache__
 **/__pycache__
-eval/results
 *.pyc
 .env
+eval/results/*.csv

@@ -45,6 +45,6 @@ uv run --group eval python scripts/evaluate.py
 uv run --group eval python scripts/evaluate.py --top-k 8 --chunk-tokens 256
 ```
 
-Questions and reference answers are in `eval/dataset.jsonl`. Sample documents are in `eval/docs/`. Each run writes `eval/results/<timestamp>-<config>.csv`.
+Questions and reference answers are in `eval/dataset.jsonl`. Sample documents are in `eval/docs/`. Each run writes `eval/results/<timestamp>-<config>.csv` plus a JSON summary used by `GET /evaluation`.
 
-`--chunk-tokens` and `--embed-model` use a separate Qdrant collection. Optional `EVAL_LLM_BASE_URL`, `EVAL_LLM_API_KEY`, and `EVAL_LLM_MODEL` select the model that judges the answers.
+`--chunk-tokens` and `--embed-model` use a separate Qdrant collection. Optional `EVAL_LLM_BASE_URL`, `EVAL_LLM_API_KEY`, and `EVAL_LLM_MODEL` select the model that judges the answers. Use an OpenAI-compatible base URL (no `/chat/completions` suffix).

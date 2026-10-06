@@ -131,6 +131,23 @@ def main() -> None:
     reset_components()
     settings = get_settings()
 
+    eval_llm = get_eval_llm()
+    try:
+        probe = eval_llm.complete("Reply with only the word ok.")
+        if not str(getattr(probe, "text", "")).strip():
+            raise SystemExit("EVAL LLM returned an empty response")
+    except SystemExit:
+        raise
+    except Exception as exc:
+        raise SystemExit(
+            "EVAL LLM is not reachable. Check EVAL_LLM_BASE_URL / "
+            f"EVAL_LLM_MODEL ({settings.eval_llm_model or settings.llm_model}): {exc}"
+        ) from exc
+    print(
+        f"eval llm: {settings.eval_llm_model or settings.llm_model} "
+        f"@ {settings.eval_llm_base_url or settings.llm_base_url}"
+    )
+
     from ragas import EvaluationDataset, evaluate
     from ragas.embeddings import LlamaIndexEmbeddingsWrapper
     from ragas.llms import LlamaIndexLLMWrapper
@@ -180,25 +197,79 @@ def main() -> None:
             LLMContextPrecisionWithReference(),
             LLMContextRecall(),
         ],
-        llm=LlamaIndexLLMWrapper(get_eval_llm()),
+        llm=LlamaIndexLLMWrapper(eval_llm),
         embeddings=LlamaIndexEmbeddingsWrapper(get_embed_model()),
     )
     frame = result.to_pandas()
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    created_at = datetime.now(timezone.utc)
+    run_id = f"{stamp}-{config_name}"
     out_dir = ROOT / "eval" / "results"
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / f"{stamp}-{config_name}.csv"
+    out_path = out_dir / f"{run_id}.csv"
     frame.to_csv(out_path, index=False, quoting=csv.QUOTE_MINIMAL)
+
+    from app.evaluation import TEXT_COLUMNS, build_run_payload
+
+    questions = []
+    for _, row in frame.iterrows():
+        scores = {}
+        for column in frame.columns:
+            if column in TEXT_COLUMNS:
+                continue
+            value = row[column]
+            if value is None or (isinstance(value, float) and value != value):
+                continue
+            try:
+                scores[column] = float(value)
+            except (TypeError, ValueError):
+                continue
+        contexts = row.get("retrieved_contexts")
+        if hasattr(contexts, "tolist"):
+            contexts = contexts.tolist()
+        questions.append(
+            {
+                "question": str(row.get("user_input") or ""),
+                "response": str(row.get("response") or ""),
+                "reference": str(row.get("reference") or ""),
+                "retrieved_contexts": contexts,
+                "scores": scores,
+            }
+        )
+
+    payload = build_run_payload(
+        run_id=run_id,
+        questions=questions,
+        config={
+            "name": config_name,
+            "top_k": args.top_k or settings.similarity_top_k,
+            "chunk_tokens": args.chunk_tokens or settings.chunk_max_tokens,
+            "embed_model": args.embed_model or settings.embed_model,
+            "collection": settings.qdrant_collection,
+            "answer_model": settings.llm_model,
+            "eval_model": settings.eval_llm_model or settings.llm_model,
+        },
+        created_at=created_at,
+    )
+    serializable = {
+        **payload,
+        "created_at": created_at.isoformat().replace("+00:00", "Z"),
+    }
+    json_path = out_dir / f"{run_id}.json"
+    latest_path = out_dir / "latest.json"
+    encoded = json.dumps(serializable, indent=2, ensure_ascii=False) + "\n"
+    json_path.write_text(encoded, encoding="utf-8")
+    latest_path.write_text(encoded, encoding="utf-8")
 
     print(f"collection: {settings.qdrant_collection}")
     print(f"questions: {len(samples)}")
     print(f"wrote {out_path}")
-    for column in frame.columns:
-        if column in {"user_input", "response", "retrieved_contexts", "reference"}:
-            continue
-        series = frame[column]
-        if getattr(series, "dtype", None) is not None and series.dtype.kind in {"f", "i"}:
-            print(f"{column}: {series.mean():.3f}")
+    print(f"wrote {json_path}")
+    summary = payload["summary"]
+    if summary["overall_score"] is not None:
+        print(f"overall: {summary['overall_score']:.3f}")
+    for key, stats in summary["metrics"].items():
+        print(f"{key}: {stats['mean']:.3f}")
 
 
 if __name__ == "__main__":

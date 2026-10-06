@@ -56,3 +56,36 @@ class MessageOut(BaseModel):
     created_at: datetime
 
     model_config = {"from_attributes": True}
+
+
+class MetricStatsOut(BaseModel):
+    label: str
+    mean: float
+    min: float
+    max: float
+
+
+class EvaluationSummaryOut(BaseModel):
+    question_count: int
+    scored_count: int
+    overall_score: float | None = None
+    metrics: dict[str, MetricStatsOut]
+
+
+class EvaluationQuestionOut(BaseModel):
+    question: str
+    response: str
+    reference: str
+    retrieved_contexts: str | list[str] | None = None
+    scores: dict[str, float] = Field(default_factory=dict)
+
+
+class EvaluationRunSummaryOut(BaseModel):
+    id: str
+    created_at: datetime
+    config: dict
+    summary: EvaluationSummaryOut
+
+
+class EvaluationRunOut(EvaluationRunSummaryOut):
+    questions: list[EvaluationQuestionOut]

@@ -50,6 +50,8 @@ services:
       CORS_ORIGINS: http://localhost:8080
     ports:
       - "8000:8000"
+    volumes:
+      - ./eval/results:/app/eval/results
     depends_on:
       postgres:
         condition: service_healthy
